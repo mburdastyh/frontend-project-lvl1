@@ -13,13 +13,13 @@ export const sayHiAndAskName = () => {
   return name;
 };
 
-export const getRandomInt = (num) => {
+const getRandomInt = (num) => {
   const max = Math.floor(num) + 1;
 
   return Math.floor(Math.random() * (max - 1)) + 1;
 };
 
-export const getRandomExpression = () => {
+const getRandomExpression = () => {
   const operators = ['+', '-', '*'];
 
   const a = getRandomInt(maxNumberForGames);
@@ -33,7 +33,7 @@ export const getRandomExpression = () => {
   };
 };
 
-export const checkUserAnswer = (userAnswer, properAnswer, userName) => {
+const checkUserAnswer = (userAnswer, properAnswer, userName) => {
   if (userAnswer === String(properAnswer)) {
     console.log('Correct!');
     return true;
@@ -41,6 +41,14 @@ export const checkUserAnswer = (userAnswer, properAnswer, userName) => {
   console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${properAnswer}".`);
   console.log(`Let's try again, ${userName}!`);
   return false;
+};
+
+const getGcd = (value1, value2) => {
+  if (value2 === 0) {
+    return Math.abs(value1);
+  }
+
+  return getGcd(value2, value1 % value2);
 };
 
 export const evenGame = (name) => {
@@ -82,6 +90,27 @@ export const calcGame = (name) => {
         properAnswer = exp.a * exp.b;
         break;
     }
+
+    const result = checkUserAnswer(userAnswer, properAnswer);
+
+    amountOfRightAns = (result) ? amountOfRightAns + 1 : 0;
+  } while (amountOfRightAns !== numOfAttempts);
+
+  console.log(`Congratulations, ${name}!`);
+
+  return 0;
+};
+
+export const gcdGame = (name) => {
+  let amountOfRightAns = 0;
+
+  do {
+    const n1 = getRandomInt(maxNumberForGames);
+    const n2 = getRandomInt(maxNumberForGames);
+
+    console.log(`Question: ${n1} ${n2}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    const properAnswer = getGcd(n1, n2);
 
     const result = checkUserAnswer(userAnswer, properAnswer);
 

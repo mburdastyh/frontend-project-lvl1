@@ -9,6 +9,9 @@ even:
 calc:
 	node bin/games/brain-calc.js
 
+gcd:
+	node bin/games/brain-gcd.js
+
 publish:
 	npm publish --dry-run
 lint:
