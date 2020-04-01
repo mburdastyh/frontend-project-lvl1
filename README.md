@@ -3,3 +3,5 @@
 ![](https://github.com/mburdastyh/frontend-project-lvl1/workflows/linter-auto/badge.svg)
 
 [![asciicast](https://asciinema.org/a/DMAguO8C6sRXWXPtOJoQbOjPw.svg)](https://asciinema.org/a/DMAguO8C6sRXWXPtOJoQbOjPw)
+
+[![asciicast](https://asciinema.org/a/wr0h957kaba0uzV4N7fvkx2g0.svg)](https://asciinema.org/a/wr0h957kaba0uzV4N7fvkx2g0)

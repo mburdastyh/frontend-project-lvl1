@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { sayHiAndAskName, evenGame } from '../src/index.js';
+import { sayHiAndAskName, evenGame } from '../../src/index.js';
 
 const userName = sayHiAndAskName();
 

@@ -4,7 +4,11 @@ start:
 	node bin/brain-games.js
 
 even:
-	node bin/brain-even.js
+	node bin/games/brain-even.js
+
+calc:
+	node bin/games/brain-calc.js
+
 publish:
 	npm publish --dry-run
 lint:
