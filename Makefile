@@ -4,13 +4,16 @@ start:
 	node bin/brain-games.js
 
 even:
-	node bin/games/brain-even.js
+	node bin/brain-even.js
 
 calc:
-	node bin/games/brain-calc.js
+	node bin/brain-calc.js
 
 gcd:
-	node bin/games/brain-gcd.js
+	node bin/brain-gcd.js
+
+progr:
+	node bin/brain-progression.js
 
 publish:
 	npm publish --dry-run
