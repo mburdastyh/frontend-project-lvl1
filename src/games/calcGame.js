@@ -1,34 +1,41 @@
-import readlineSync from 'readline-sync';
-import { getRandomExpression, checkUserAnswer, numOfAttempts } from '../index.js';
+import {
+  getRandomInt, maxNumberForGames, runGame,
+} from '../index.js';
+
+const getRandomExpression = () => {
+  const operators = ['+', '-', '*'];
+
+  const a = getRandomInt(maxNumberForGames);
+  const b = getRandomInt(maxNumberForGames);
+  const operator = operators[getRandomInt(operators.length) - 1];
+
+  return {
+    a,
+    b,
+    operator,
+  };
+};
 
 const calcGame = (name) => {
-  let amountOfRightAns = 0;
-  do {
-    const exp = getRandomExpression();
-    console.log(`Question: ${exp.a} ${exp.operator} ${exp.b}`);
+  const initData = () => getRandomExpression();
 
-    const userAnswer = readlineSync.question('Your answer: ');
-    let properAnswer;
-    switch (exp.operator) {
+  const askQuestion = (value) => {
+    console.log(`Question: ${value.a} ${value.operator} ${value.b}`);
+  };
+
+  const getProperAnswer = (value) => {
+    switch (value.operator) {
       case '+':
-        properAnswer = exp.a + exp.b;
-        break;
+        return value.a + value.b;
       case '-':
-        properAnswer = exp.a - exp.b;
-        break;
+        return value.a - value.b;
       default:
-        properAnswer = exp.a * exp.b;
-        break;
+        return value.a * value.b;
     }
+  };
 
-    const result = checkUserAnswer(userAnswer, properAnswer);
-
-    amountOfRightAns = (result) ? amountOfRightAns + 1 : 0;
-  } while (amountOfRightAns !== numOfAttempts);
-
-  console.log(`Congratulations, ${name}!`);
-
-  return 0;
+  console.log('What is the result of the expression?');
+  runGame(initData, askQuestion, getProperAnswer, name);
 };
 
 export default calcGame;

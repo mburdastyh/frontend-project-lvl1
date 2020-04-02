@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { sayHiAndAskName } from '../src/index.js';
-import calcGame from '../src/games/calcGame.js';
+import primeGame from '../src/games/primeGame.js';
 
 const userName = sayHiAndAskName();
 
-calcGame(userName);
+primeGame(userName);

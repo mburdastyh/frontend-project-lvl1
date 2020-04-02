@@ -1,26 +1,18 @@
-import readlineSync from 'readline-sync';
 import {
-  getRandomInt, checkUserAnswer, maxNumberForGames, numOfAttempts,
+  getRandomInt, maxNumberForGames, runGame,
 } from '../index.js';
 
 const evenGame = (name) => {
-  let amountOfRightAns = 0;
+  const initData = () => getRandomInt(maxNumberForGames);
 
-  do {
-    const num = getRandomInt(maxNumberForGames);
-    console.log(`Question: ${num}`);
+  const askQuestion = (value) => {
+    console.log(`Question: ${value}`);
+  };
 
-    const userAnswer = readlineSync.question('Your answer: ');
-    const properAnswer = (num % 2 === 0) ? 'yes' : 'no';
+  const getProperAnswer = (value) => ((value % 2 === 0) ? 'yes' : 'no');
 
-    const result = checkUserAnswer(userAnswer, properAnswer);
-
-    amountOfRightAns = (result) ? amountOfRightAns + 1 : 0;
-  } while (amountOfRightAns !== numOfAttempts);
-
-  console.log(`Congratulations, ${name}!`);
-
-  return 0;
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  runGame(initData, askQuestion, getProperAnswer, name);
 };
 
 export default evenGame;

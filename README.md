@@ -2,10 +2,22 @@
 
 ![](https://github.com/mburdastyh/frontend-project-lvl1/workflows/linter-auto/badge.svg)
 
-[![asciicast](https://asciinema.org/a/DMAguO8C6sRXWXPtOJoQbOjPw.svg)](https://asciinema.org/a/DMAguO8C6sRXWXPtOJoQbOjPw)
+# brain-even example
 
-[![asciicast](https://asciinema.org/a/wr0h957kaba0uzV4N7fvkx2g0.svg)](https://asciinema.org/a/wr0h957kaba0uzV4N7fvkx2g0)
+[![asciicast](https://asciinema.org/a/8Uj7xACwC4uxEn71n8NxxJoUE.svg)](https://asciinema.org/a/8Uj7xACwC4uxEn71n8NxxJoUE)
 
-[![asciicast](https://asciinema.org/a/qs7TgNpQVUHGV1mL0Z7mC6je1.svg)](https://asciinema.org/a/qs7TgNpQVUHGV1mL0Z7mC6je1)
+# brain-calc example
 
-[![asciicast](https://asciinema.org/a/nZ79ETxZZtZSIwWHFvC6sRC4j.svg)](https://asciinema.org/a/nZ79ETxZZtZSIwWHFvC6sRC4j)
+[![asciicast](https://asciinema.org/a/13BpsStY7IhXYbLREhPHrAhL4.svg)](https://asciinema.org/a/13BpsStY7IhXYbLREhPHrAhL4)
+
+# brain-gcd example
+
+[![asciicast](https://asciinema.org/a/dPMiIotDm07mqbYHBzKKROZWa.svg)](https://asciinema.org/a/dPMiIotDm07mqbYHBzKKROZWa)
+
+# brain-progression example
+
+[![asciicast](https://asciinema.org/a/QNkpyugXTHKsCEBqMdiXeurx4.svg)](https://asciinema.org/a/QNkpyugXTHKsCEBqMdiXeurx4)
+
+# brain-prime example
+
+[![asciicast](https://asciinema.org/a/FN30hnyaoO1e78Stsjz700j9X.svg)](https://asciinema.org/a/FN30hnyaoO1e78Stsjz700j9X)

@@ -1,36 +1,49 @@
-import readlineSync from 'readline-sync';
 import {
-  getProgression, getRandomInt, checkUserAnswer, numOfAttempts, progressionLength,
+  getRandomInt, maxNumberForGames, runGame,
 } from '../index.js';
 
-const progrGame = (name) => {
-  let amountOfRightAns = 0;
+const progressionLength = 10;
 
-  do {
-    const progression = getProgression(progressionLength);
+const getProgression = (firstValue, stepOfProgression, length) => {
+  const result = [];
+  let currentValue = firstValue;
+  for (let i = 0; i < length; i += 1) {
+    result.push(currentValue);
+    currentValue += stepOfProgression;
+  }
+  return result;
+};
+
+const progrGame = (name) => {
+  const initData = () => {
+    const progression = getProgression(
+      getRandomInt(maxNumberForGames),
+      getRandomInt(maxNumberForGames),
+      progressionLength,
+    );
     const imaginedIndex = getRandomInt(progressionLength) - 1;
     const imaginedNumber = progression[imaginedIndex];
-    // progression[imaginedIndex] = '..';
 
+    return {
+      progr: progression,
+      i: imaginedIndex,
+      n: imaginedNumber,
+    };
+  };
+
+  const askQuestion = (value) => {
     const imagedProgression = [];
     for (let i = 0; i < progressionLength; i += 1) {
-      imagedProgression.push(String(progression[i]));
+      imagedProgression.push(String(value.progr[i]));
     }
-    imagedProgression[imaginedIndex] = '..';
+    imagedProgression[value.i] = '..';
 
     console.log(`Question: ${imagedProgression.join(' ')}`);
+  };
 
-    const userAnswer = readlineSync.question('Your answer: ');
-    const properAnswer = imaginedNumber;
+  const getProperAnswer = (value) => value.n;
 
-    const result = checkUserAnswer(userAnswer, properAnswer);
-
-    amountOfRightAns = (result) ? amountOfRightAns + 1 : 0;
-  } while (amountOfRightAns !== numOfAttempts);
-
-  console.log(`Congratulations, ${name}!`);
-
-  return 0;
+  runGame(initData, askQuestion, getProperAnswer, name);
 };
 
 export default progrGame;

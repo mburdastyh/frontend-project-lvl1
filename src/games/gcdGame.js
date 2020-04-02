@@ -1,27 +1,33 @@
-import readlineSync from 'readline-sync';
 import {
-  getRandomInt, checkUserAnswer, getGcd, numOfAttempts, maxNumberForGames,
+  getRandomInt, maxNumberForGames, runGame,
 } from '../index.js';
 
+const getGcd = (value1, value2) => {
+  if (value2 === 0) {
+    return Math.abs(value1);
+  }
+
+  return getGcd(value2, value1 % value2);
+};
+
 const gcdGame = (name) => {
-  let amountOfRightAns = 0;
+  const initData = () => {
+    const value = {
+      n1: getRandomInt(maxNumberForGames),
+      n2: getRandomInt(maxNumberForGames),
+    };
 
-  do {
-    const n1 = getRandomInt(maxNumberForGames);
-    const n2 = getRandomInt(maxNumberForGames);
+    return value;
+  };
 
-    console.log(`Question: ${n1} ${n2}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-    const properAnswer = getGcd(n1, n2);
+  const askQuestion = (value) => {
+    console.log(`Question: ${value.n1} ${value.n2}`);
+  };
 
-    const result = checkUserAnswer(userAnswer, properAnswer);
+  const getProperAnswer = (value) => getGcd(value.n1, value.n2);
 
-    amountOfRightAns = (result) ? amountOfRightAns + 1 : 0;
-  } while (amountOfRightAns !== numOfAttempts);
-
-  console.log(`Congratulations, ${name}!`);
-
-  return 0;
+  console.log('Find the greatest common divisor of given numbers.');
+  runGame(initData, askQuestion, getProperAnswer, name);
 };
 
 export default gcdGame;
