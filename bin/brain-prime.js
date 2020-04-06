@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-import { sayHiAndAskName } from '../src/index.js';
-import primeGame from '../src/games/primeGame.js';
+import primeGame from '../src/games/brain-prime.js';
 
-const userName = sayHiAndAskName();
-
-primeGame(userName);
+primeGame();

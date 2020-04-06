@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-import { sayHiAndAskName } from '../src/index.js';
-import calcGame from '../src/games/calcGame.js';
+import calcGame from '../src/games/brain-calc.js';
 
-const userName = sayHiAndAskName();
-
-calcGame(userName);
+calcGame();

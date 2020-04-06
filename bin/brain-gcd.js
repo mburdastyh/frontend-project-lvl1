@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-import { sayHiAndAskName } from '../src/index.js';
-import gcdGame from '../src/games/gcdGame.js';
+import gcdGame from '../src/games/brain-gcd.js';
 
-const userName = sayHiAndAskName();
-
-gcdGame(userName);
+gcdGame();
