@@ -1,28 +1,9 @@
 // @ts-check
 import readlineSync from 'readline-sync';
 
-export const numOfAttempts = 3;
-export const maxNumberForGames = 100;
+const numOfAttempts = 3;
 
-export const getRandomInt = (num) => {
-  const max = Math.floor(num) + 1;
-
-  return Math.floor(Math.random() * (max - 1)) + 1;
-};
-
-const checkUserAnswer = (userAnswer, properAnswer) => {
-  if (userAnswer === String(properAnswer)) {
-    console.log('Correct!');
-
-    return true;
-  }
-
-  console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${properAnswer}".`);
-
-  return false;
-};
-
-export const runGame = (rules, initData, askQuestion, getProperAnswer) => {
+const runGame = (rules, initData) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
@@ -30,21 +11,23 @@ export const runGame = (rules, initData, askQuestion, getProperAnswer) => {
   console.log(rules);
 
   for (let amountOfRightAns = 0; amountOfRightAns < numOfAttempts; amountOfRightAns += 1) {
-    const data = initData();
-    askQuestion(data);
+    const { question, answer } = initData();
+    console.log(`Question: ${question}`);
 
     const userAnswer = readlineSync.question('Your answer: ');
-    const properAnswer = getProperAnswer(data);
 
-    const isCorrectAnswer = checkUserAnswer(userAnswer, properAnswer);
-
-    if (!isCorrectAnswer) {
+    if (userAnswer !== answer) {
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${answer}".`);
       console.log(`Let's try again, ${userName}!`);
       break;
     }
+
+    console.log('Correct!');
 
     if (amountOfRightAns === numOfAttempts - 1) {
       console.log(`Congratulations, ${userName}!`);
     }
   }
 };
+
+export default runGame;
