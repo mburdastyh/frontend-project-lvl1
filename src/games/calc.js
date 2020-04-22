@@ -1,12 +1,15 @@
-import { getRandomInt, maxNumberForGames } from '../utils.js';
+import { getRandomInt, maxNumberForGames, minNumberForGames } from '../utils.js';
 import runGame from '../index.js';
+
+const description = 'What is the result of the expression?';
 
 const getRandomExpression = () => {
   const operators = ['+', '-', '*'];
+  const amountOfOperators = operators.length - 1;
 
-  const a = getRandomInt(maxNumberForGames);
-  const b = getRandomInt(maxNumberForGames);
-  const operator = operators[getRandomInt(operators.length) - 1];
+  const a = getRandomInt(minNumberForGames, maxNumberForGames);
+  const b = getRandomInt(minNumberForGames, maxNumberForGames);
+  const operator = operators[getRandomInt(0, amountOfOperators)];
 
   return {
     a,
@@ -18,28 +21,29 @@ const getRandomExpression = () => {
 const initData = () => {
   const { a, b, operator } = getRandomExpression();
 
-  let res = 0;
+  let expression;
   switch (operator) {
     case '+':
-      res = a + b;
+      expression = a + b;
       break;
     case '-':
-      res = a - b;
+      expression = a - b;
+      break;
+    case '*':
+      expression = a * b;
       break;
     default:
-      res = a * b;
+      break;
   }
 
   return {
     question: `${a} ${operator} ${b}`,
-    answer: String(res),
+    answer: String(expression),
   };
 };
 
 const calcGame = () => {
-  const rules = 'What is the result of the expression?';
-
-  runGame(rules, initData);
+  runGame(description, initData);
 };
 
 export default calcGame;

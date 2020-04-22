@@ -1,8 +1,10 @@
-import { getRandomInt, maxNumberForGames } from '../utils.js';
+import { getRandomInt, maxNumberForGames, minNumberForGames } from '../utils.js';
 import runGame from '../index.js';
 
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
+
 const initData = () => {
-  const randomNumber = getRandomInt(maxNumberForGames);
+  const randomNumber = getRandomInt(minNumberForGames, maxNumberForGames);
 
   return {
     question: randomNumber,
@@ -11,9 +13,7 @@ const initData = () => {
 };
 
 const evenGame = () => {
-  const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-  runGame(rules, initData);
+  runGame(description, initData);
 };
 
 export default evenGame;

@@ -1,5 +1,7 @@
-import { getRandomInt, maxNumberForGames } from '../utils.js';
+import { getRandomInt, maxNumberForGames, minNumberForGames } from '../utils.js';
 import runGame from '../index.js';
+
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const checkIsPrime = (num) => {
   if (num < 2) {
@@ -16,18 +18,16 @@ const checkIsPrime = (num) => {
 };
 
 const initData = () => {
-  const randomNumber = getRandomInt(maxNumberForGames);
+  const randomNumber = getRandomInt(minNumberForGames, maxNumberForGames);
 
   return {
-    question: `${randomNumber}`,
+    question: String(randomNumber),
     answer: checkIsPrime(randomNumber) ? 'yes' : 'no',
   };
 };
 
 const primeGame = () => {
-  const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-  runGame(rules, initData);
+  runGame(description, initData);
 };
 
 export default primeGame;

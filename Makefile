@@ -12,7 +12,7 @@ calc:
 gcd:
 	node bin/brain-gcd.js
 
-progr:
+progression:
 	node bin/brain-progression.js
 
 prime:

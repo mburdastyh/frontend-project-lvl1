@@ -1,7 +1,8 @@
-import { getRandomInt, maxNumberForGames } from '../utils.js';
+import { getRandomInt, maxNumberForGames, minNumberForGames } from '../utils.js';
 import runGame from '../index.js';
 
 const progressionLength = 10;
+const description = 'What number is missing in the progression?';
 
 const getProgression = (start, diff, length) => {
   const result = [];
@@ -14,25 +15,23 @@ const getProgression = (start, diff, length) => {
 
 const initData = () => {
   const progression = getProgression(
-    getRandomInt(maxNumberForGames),
-    getRandomInt(maxNumberForGames),
+    getRandomInt(minNumberForGames, maxNumberForGames),
+    getRandomInt(minNumberForGames, maxNumberForGames),
     progressionLength,
   );
-  const imaginedIndex = getRandomInt(progressionLength) - 1;
+  const imaginedIndex = getRandomInt(0, progressionLength - 1);
   const imaginedNumber = progression[imaginedIndex];
 
-  const imagedPression = progression.map((num, i) => (i === imaginedIndex ? '..' : num));
+  const imagedProgression = progression.map((num, i) => (i === imaginedIndex ? '..' : num));
 
   return {
-    question: imagedPression.join(' '),
+    question: imagedProgression.join(' '),
     answer: String(imaginedNumber),
   };
 };
 
 const progrGame = () => {
-  const rules = 'What number is missing in the progression?';
-
-  runGame(rules, initData);
+  runGame(description, initData);
 };
 
 export default progrGame;

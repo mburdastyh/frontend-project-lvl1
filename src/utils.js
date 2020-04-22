@@ -1,7 +1,8 @@
 export const maxNumberForGames = 100;
+export const minNumberForGames = 1;
 
-export const getRandomInt = (num) => {
-  const max = Math.floor(num) + 1;
+export const getRandomInt = (start, end) => {
+  const randomFloat = start + Math.random() * (end + 1 - start);
 
-  return Math.floor(Math.random() * (max - 1)) + 1;
+  return Math.floor(randomFloat);
 };
