@@ -11,7 +11,7 @@ const getGcd = (value1, value2) => {
   return getGcd(value2, value1 % value2);
 };
 
-const initData = () => {
+const generateData = () => {
   const randomNumber1 = getRandomInt(minNumberForGames, maxNumberForGames);
   const randomNumber2 = getRandomInt(minNumberForGames, maxNumberForGames);
 
@@ -22,7 +22,7 @@ const initData = () => {
 };
 
 const gcdGame = () => {
-  runGame(description, initData);
+  runGame(description, generateData);
 };
 
 export default gcdGame;

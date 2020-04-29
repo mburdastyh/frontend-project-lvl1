@@ -13,25 +13,25 @@ const getProgression = (start, diff, length) => {
   return result;
 };
 
-const initData = () => {
+const generateData = () => {
   const progression = getProgression(
     getRandomInt(minNumberForGames, maxNumberForGames),
     getRandomInt(minNumberForGames, maxNumberForGames),
     progressionLength,
   );
-  const imaginedIndex = getRandomInt(0, progressionLength - 1);
-  const imaginedNumber = progression[imaginedIndex];
 
-  const imagedProgression = progression.map((num, i) => (i === imaginedIndex ? '..' : num));
+  const imaginedIndex = getRandomInt(0, progressionLength - 1);
+  const answer = progression[imaginedIndex];
+  const question = progression.map((num, i) => (i === imaginedIndex ? '..' : num));
 
   return {
-    question: imagedProgression.join(' '),
-    answer: String(imaginedNumber),
+    question: question.join(' '),
+    answer: String(answer),
   };
 };
 
-const progrGame = () => {
-  runGame(description, initData);
+const prograssionGame = () => {
+  runGame(description, generateData);
 };
 
-export default progrGame;
+export default prograssionGame;

@@ -3,7 +3,7 @@ import runGame from '../index.js';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const checkIsPrime = (num) => {
+const isPrime = (num) => {
   if (num < 2) {
     return false;
   }
@@ -17,17 +17,17 @@ const checkIsPrime = (num) => {
   return true;
 };
 
-const initData = () => {
+const generateData = () => {
   const randomNumber = getRandomInt(minNumberForGames, maxNumberForGames);
 
   return {
     question: String(randomNumber),
-    answer: checkIsPrime(randomNumber) ? 'yes' : 'no',
+    answer: isPrime(randomNumber) ? 'yes' : 'no',
   };
 };
 
 const primeGame = () => {
-  runGame(description, initData);
+  runGame(description, generateData);
 };
 
 export default primeGame;

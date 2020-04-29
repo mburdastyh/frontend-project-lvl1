@@ -3,23 +3,17 @@ import runGame from '../index.js';
 
 const description = 'What is the result of the expression?';
 
-const getRandomExpression = () => {
+const getRandomOperator = () => {
   const operators = ['+', '-', '*'];
-  const amountOfOperators = operators.length - 1;
+  const maxOperatorIndex = operators.length - 1;
 
-  const a = getRandomInt(minNumberForGames, maxNumberForGames);
-  const b = getRandomInt(minNumberForGames, maxNumberForGames);
-  const operator = operators[getRandomInt(0, amountOfOperators)];
-
-  return {
-    a,
-    b,
-    operator,
-  };
+  return operators[getRandomInt(0, maxOperatorIndex)];
 };
 
-const initData = () => {
-  const { a, b, operator } = getRandomExpression();
+const generateData = () => {
+  const a = getRandomInt(minNumberForGames, maxNumberForGames);
+  const b = getRandomInt(minNumberForGames, maxNumberForGames);
+  const operator = getRandomOperator();
 
   let expression;
   switch (operator) {
@@ -43,7 +37,7 @@ const initData = () => {
 };
 
 const calcGame = () => {
-  runGame(description, initData);
+  runGame(description, generateData);
 };
 
 export default calcGame;

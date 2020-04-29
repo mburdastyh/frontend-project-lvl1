@@ -3,7 +3,7 @@ import runGame from '../index.js';
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const initData = () => {
+const generateData = () => {
   const randomNumber = getRandomInt(minNumberForGames, maxNumberForGames);
 
   return {
@@ -13,7 +13,7 @@ const initData = () => {
 };
 
 const evenGame = () => {
-  runGame(description, initData);
+  runGame(description, generateData);
 };
 
 export default evenGame;
